@@ -62,7 +62,7 @@ class App extends React.Component {
             cardImage={ cardImage }
             cardRare={ cardRare }
             cardTrunfo={ cardTrunfo }
-            // hasTrunfo={ cardTrunfo }
+            // hasTrunfo={ hasTrunfo }
             isSaveButtonDisabled={ isSaveButtonDisabled }
             onInputChange={ onInputChange }
             onSaveButtonClick={ onSaveButtonClick }
