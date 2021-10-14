@@ -17,8 +17,6 @@ class App extends React.Component {
       // hasTrunfo: false,
       isSaveButtonDisabled: true,
     };
-    this.attributesValidation = tris.attributesValidation.bind(this);
-    this.checkFormValidation = this.checkFormValidation.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
   }
@@ -26,41 +24,35 @@ class App extends React.Component {
   onInputChange({ target }) {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState({
-      [name]: value,
-    }, this.checkFormValidation);
+    this.setState({ [name]: value });
   }
 
   onSaveButtonClick(event) {
     event.preventDefault();
-    this.setState({
-      cardName: '',
-      cardDescription: '',
-      cardAttr1: '0',
-      cardAttr2: '0',
-      cardAttr3: '0',
-      cardImage: '',
-      cardRare: 'normal',
-      cardTrunfo: false,
-    });
   }
 
-  attributesValidation() { // verificar os atributos
+  // enableButton() {
+  //   this.setState(({
+  //     cardName,
+  //     cardDescription,
+  //     cardImage,
+  //     cardRare,
+  //     cardAttr1,
+  //     cardAttr2,
+  //     cardAttr3,
+  //   }) => { // verificar os atributos
+  //     const cardAttributes = [cardAttr1, cardAttr2, cardAttr3];
+  //     const cardAtt = cardAttributes.map((att) => parseInt(att, 10));
+  //     const maxAtt = 90;
+  //     const maxSumAtt = 210;
 
-  }
-
-  checkFormValidation() { // verificar os campos
-    const { cardName, cardDescription, cardImage } = this.state;
-    if (
-      cardName
-      && cardDescription
-      && cardImage
-    ) {
-      this.setState({ isSaveButtonDisabled: false });
-    } else {
-      this.setState({ isSaveButtonDisabled: true });
-    }
-  }
+  //     return ({
+  //       isSaveButtonDisabled:
+  //         (cardName && cardDescription && cardImage && cardRare
+  //           && cardAtt.reduce((acc, curr) => acc + curr) <= maxSumAtt
+  //           && cardAtt.every((card) => card >= 0 && card <= maxAtt)) });
+  //   });
+  // }
 
   render() {
     const { onInputChange, onSaveButtonClick } = this;
