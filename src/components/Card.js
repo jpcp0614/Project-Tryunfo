@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class Card extends Component {
   render() {
@@ -21,7 +21,7 @@ class Card extends Component {
           <h3 data-testid="name-card">{ cardName }</h3>
           <img
             src={ cardImage }
-            alt="Trens"
+            alt={ cardName }
             data-testid="image-card"
           />
           <p data-testid="description-card">{ cardDescription }</p>
@@ -29,7 +29,7 @@ class Card extends Component {
           <h4 data-testid="attr2-card">{ cardAttr2 }</h4>
           <h4 data-testid="attr3-card">{ cardAttr3 }</h4>
           <h3 data-testid="rare-card">{ cardRare }</h3>
-          <p data-testid="trunfo-card">{ cardTrunfo }</p>
+          { cardTrunfo && <p data-testid="trunfo-card">{ cardTrunfo }</p> }
         </div>
       </div>
     );
@@ -48,3 +48,5 @@ Card.propTypes = {
 };
 
 export default Card;
+
+// Consulta: https://github.com/tryber/sd-015-b-project-tryunfo/blob/assis-meneghetti-fabri-tryunfo/src/components/Card.js
