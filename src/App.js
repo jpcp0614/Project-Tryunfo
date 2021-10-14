@@ -17,6 +17,8 @@ class App extends React.Component {
       // hasTrunfo: false,
       isSaveButtonDisabled: true,
     };
+    this.attributesValidation = tris.attributesValidation.bind(this);
+    this.checkFormValidation = this.checkFormValidation.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
   }
@@ -26,11 +28,38 @@ class App extends React.Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
-    });
+    }, this.checkFormValidation);
   }
 
   onSaveButtonClick(event) {
     event.preventDefault();
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: 'normal',
+      cardTrunfo: false,
+    });
+  }
+
+  attributesValidation() { // verificar os atributos
+
+  }
+
+  checkFormValidation() { // verificar os campos
+    const { cardName, cardDescription, cardImage } = this.state;
+    if (
+      cardName
+      && cardDescription
+      && cardImage
+    ) {
+      this.setState({ isSaveButtonDisabled: false });
+    } else {
+      this.setState({ isSaveButtonDisabled: true });
+    }
   }
 
   render() {
