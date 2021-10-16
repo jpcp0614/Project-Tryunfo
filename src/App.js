@@ -31,28 +31,13 @@ class App extends React.Component {
     event.preventDefault();
   }
 
-  // enableButton() {
-  //   this.setState(({
-  //     cardName,
-  //     cardDescription,
-  //     cardImage,
-  //     cardRare,
-  //     cardAttr1,
-  //     cardAttr2,
-  //     cardAttr3,
-  //   }) => { // verificar os atributos
-  //     const cardAttributes = [cardAttr1, cardAttr2, cardAttr3];
-  //     const cardAtt = cardAttributes.map((att) => parseInt(att, 10));
-  //     const maxAtt = 90;
-  //     const maxSumAtt = 210;
-
-  //     return ({
-  //       isSaveButtonDisabled:
-  //         (cardName && cardDescription && cardImage && cardRare
-  //           && cardAtt.reduce((acc, curr) => acc + curr) <= maxSumAtt
-  //           && cardAtt.every((card) => card >= 0 && card <= maxAtt)) });
-  //   });
-  // }
+  validateTextFields() {
+    const { cardName, cardDescription, cardImage } = this.state;
+    if (cardName === '' || cardDescription === '' || cardImage === '') {
+      return false;
+    }
+    return true;
+  }
 
   render() {
     const { onInputChange, onSaveButtonClick } = this;
