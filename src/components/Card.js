@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class Card extends Component {
+class Card extends Component { // requisito 3 - componentes card e as props
   render() {
     const {
       cardName,
@@ -30,6 +30,7 @@ class Card extends Component {
           <h4 data-testid="attr3-card">{ cardAttr3 }</h4>
           <h3 data-testid="rare-card">{ cardRare }</h3>
           { cardTrunfo && <p data-testid="trunfo-card">Super Trunfo</p> }
+          {/* {requisito 4 - tag condicional - renderiza com o texto Super Trunfo} */}
         </div>
       </div>
     );

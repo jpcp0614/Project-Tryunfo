@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class Form extends Component {
+class Form extends Component { // requisito 1 - criar o formulario
   render() {
     const {
       cardName,
@@ -98,7 +98,7 @@ class Form extends Component {
           </label>
           <label htmlFor="trunfo-input">
             Super Trybe Trunfo
-            { hasTrunfo ? <span>Você já tem um Super Trunfo em seu baralho</span> : <input
+            { hasTrunfo ? <span>Você já tem um Super Trunfo em seu baralho</span> : <input // requisito 7 - tag condicional
               checked={ cardTrunfo }
               data-testid="trunfo-input"
               name="cardTrunfo"
@@ -120,7 +120,7 @@ class Form extends Component {
     );
   }
 }
-
+// requisito 2 - props
 Form.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
