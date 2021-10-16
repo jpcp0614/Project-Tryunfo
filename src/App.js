@@ -20,6 +20,7 @@ class App extends React.Component {
     this.enableSaveButton = this.enableSaveButton.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+    this.validateAttributeFields = this.validateAttributeFields.bind(this);
     this.validateTextFields = this.validateTextFields.bind(this);
   }
 
