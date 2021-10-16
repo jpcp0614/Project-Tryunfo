@@ -14,9 +14,11 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
-      // hasTrunfo: false,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
     };
+
+    this.checkSuperTrunfoCard = this.checkSuperTrunfoCard.bind(this);
     this.enableSaveButton = this.enableSaveButton.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
@@ -34,6 +36,7 @@ class App extends React.Component {
 
   onSaveButtonClick(event) {
     event.preventDefault();
+    this.checkSuperTrunfoCard();
     this.setState({
       cardName: '',
       cardDescription: '',
@@ -42,10 +45,12 @@ class App extends React.Component {
       cardAttr3: '0',
       cardImage: '',
       cardRare: 'normal',
-      cardTrunfo: false,
-      // hasTrunfo: false,
-      isSaveButtonDisabled: true,
     });
+  }
+
+  checkSuperTrunfoCard() {
+    const { cardTrunfo } = this.state;
+    return cardTrunfo && this.setState({ hasTrunfo: true });
   }
 
   validateAttributeFields() {
@@ -92,7 +97,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      // hasTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
     } = this.state;
     return (
@@ -110,7 +115,7 @@ class App extends React.Component {
             cardImage={ cardImage }
             cardRare={ cardRare }
             cardTrunfo={ cardTrunfo }
-            // hasTrunfo={ hasTrunfo }
+            hasTrunfo={ hasTrunfo }
             isSaveButtonDisabled={ isSaveButtonDisabled }
             onInputChange={ onInputChange }
             onSaveButtonClick={ onSaveButtonClick }
