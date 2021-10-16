@@ -11,24 +11,58 @@ class App extends React.Component {
       cardAttr1: '',
       cardAttr2: '',
       cardAttr3: '',
-      cardImage: 'https://exame.com/wp-content/uploads/2020/10/novo-trem-cptm.jpg',
+      cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
       // hasTrunfo: false,
       isSaveButtonDisabled: true,
     };
+    this.enableSaveButton = this.enableSaveButton.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+    this.validateTextFields = this.validateTextFields.bind(this);
   }
 
   onInputChange({ target }) {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState({ [name]: value });
+    this.setState({
+      [name]: value,
+    }, () => this.ableButtonSave());
   }
 
   onSaveButtonClick(event) {
     event.preventDefault();
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: 'normal',
+      cardTrunfo: false,
+      // hasTrunfo: false,
+      isSaveButtonDisabled: true,
+    });
+  }
+
+  validateAttributeFields() {
+    const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
+    const attr1 = Number(cardAttr1);
+    const attr2 = Number(cardAttr2);
+    const attr3 = Number(cardAttr3);
+    const sumAttrs = attr1 + attr2 + attr3;
+    const maxAttValue = 90;
+    const maxSumAttValue = 210;
+
+    if (attr1 > maxAttValue || attr1 < 0
+      || attr2 > maxAttValue || attr2 < 0
+      || attr3 > maxAttValue || attr3 < 0
+      || sumAttrs > maxSumAttValue) {
+      return false;
+    }
+    return true;
   }
 
   validateTextFields() {
@@ -37,6 +71,13 @@ class App extends React.Component {
       return false;
     }
     return true;
+  }
+
+  enableSaveButton() {
+    if (validateAttributeFields() && validateTextFields()) {
+      return this.setState({ isSaveButtonDisabled: false });
+    }
+    return this.setState({ isSaveButtonDisabled: true });
   }
 
   render() {
