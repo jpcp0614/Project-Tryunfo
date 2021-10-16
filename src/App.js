@@ -29,7 +29,7 @@ class App extends React.Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
-    }, () => this.ableButtonSave());
+    }, () => this.enableSaveButton());
   }
 
   onSaveButtonClick(event) {
@@ -75,7 +75,7 @@ class App extends React.Component {
   }
 
   enableSaveButton() {
-    if (validateAttributeFields() && validateTextFields()) {
+    if (this.validateAttributeFields() && this.validateTextFields()) {
       return this.setState({ isSaveButtonDisabled: false });
     }
     return this.setState({ isSaveButtonDisabled: true });
