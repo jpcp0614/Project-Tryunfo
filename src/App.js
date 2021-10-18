@@ -51,7 +51,7 @@ class App extends React.Component {
       hasTrunfo,
     } = this.state;
 
-    const savedCard = { // requisito 8 - pegar as variaveis e adicionar na carta salva
+    const savedCard = { // requisito 8 - pegar as variáveis e adicionar na carta salva
       cardName,
       cardDescription,
       cardAttr1,
